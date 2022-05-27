@@ -1,14 +1,15 @@
 import React from 'react'
 import { Table, Fila } from "react-bootstrap";
 
-function TablaPrecios({ formState }) {
+function TablaPrecios({ formState, color }) {
+    console.log("color: "+color)
     return (
         <>
             <div className="border border-dark font-weight-bolder p-3">
                 <Table className="w-100 m-auto bg-dark text-white">
-                    <thead className="bg-success">
+                    <thead className={color?"bg-danger":"bg-success"}>
                         <tr>
-                            <th className="tabla-elemento w-75">Concepto</th>
+                            <th className="tabla-elemento w-75">Concepto {color?"Anterior":"Actual"}</th>
                             <th className="tabla-elemento w-25">Precio</th>
                         </tr>
                     </thead>
@@ -61,7 +62,7 @@ function TablaPrecios({ formState }) {
                             <td className="tabla-elemento">TV Extra: {formState.tvExtraValue}</td>
                             <td className="tabla-elemento">{formState.tvExtraValue*129}</td>
                         </tr>}
-                        <tr className='bg-success'>
+                        <tr className={color?"bg-danger":"bg-success"}>
                             <td className="tabla-elemento">Total</td>
                             <td className="tabla-elemento">Indefinido</td>
                         </tr>

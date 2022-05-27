@@ -24,6 +24,8 @@ const initialState = {
 export default function Cotizador() {
   const [toggleState, setToggleState] = useState(1);
   const [formState, setFormState] = useState(initialState);
+  const [formState2, setFormState2] = useState(initialState);
+  const [show, setShow] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +64,8 @@ export default function Cotizador() {
       );
     }
 
-    setFormState(initialState);
+    reiniciarAmbos();
+
   };
 
   useEffect(() => {
@@ -71,7 +74,7 @@ export default function Cotizador() {
       televisionValue: "1",
     }));
   }, [])
-  
+
 
   const onChange = (event) => {
     setFormState((prev) => ({
@@ -107,6 +110,20 @@ export default function Cotizador() {
       tvExtraValue: prev.tvExtraValue + 1,
     }));
   };
+
+  const reiniciarAmbos = () => {
+    setFormState(initialState)
+    setFormState2(initialState)
+    setShow(false);
+  };
+
+  const comparar = () => {
+    setFormState(initialState)
+    setFormState2(formState)
+    setShow(true);
+  };
+
+
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -181,50 +198,59 @@ export default function Cotizador() {
                     toggleState={1}
                   />
                 </div>
-
-                <div className="vertical mb-3">
-                  <InnerSectionInfo
-                    onChange={onChange}
-                    formState={formState}
-                    data={Premium}
-                    title="¿TV Premium?"
-                    name="tvPremiumValue"
-                    toggleState={toggleState}
-                  />
-
-                  <InnerSectionInfo
-                    onChange={onChange}
-                    formState={formState}
-                    data={Television}
-                    title="Television"
-                    name="televisionValue"
-                    toggleState={toggleState}
-                  />
+                <div className="container-fluid ">
+                  <div className="row">
+                    <div className='col'>
+                      <InnerSectionInfo
+                        onChange={onChange}
+                        formState={formState}
+                        data={Premium}
+                        title="¿TV Premium?"
+                        name="tvPremiumValue"
+                        toggleState={toggleState}
+                      />
+                    </div>
+                    <div className='col'>
+                      <InnerSectionInfo
+                        onChange={onChange}
+                        formState={formState}
+                        data={Television}
+                        title="Television"
+                        name="televisionValue"
+                        toggleState={toggleState}
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="vertical mb-3">
-                  <InnerSectionInfo
-                    onChange={onChange}
-                    formState={formState}
-                    data={Streaming}
-                    title="¿Servicio de Streaming?"
-                    name="streamingValue"
-                    toggleState={1}
-                  />
 
-                  <InnerSectionInfo
-                    onChange={onChange}
-                    formState={formState}
-                    data={Canales}
-                    title="¿Mas canales?"
-                    name="canalesValue"
-                    toggleState={toggleState}
-                  />
+                <div className="row">
+                  <div className="col">
+                    <InnerSectionInfo
+                      onChange={onChange}
+                      formState={formState}
+                      data={Streaming}
+                      title="¿Servicio de Streaming?"
+                      name="streamingValue"
+                      toggleState={1}
+                    />
+                  </div>
+                  <div className="col">
+
+                    <InnerSectionInfo
+                      onChange={onChange}
+                      formState={formState}
+                      data={Canales}
+                      title="¿Mas canales?"
+                      name="canalesValue"
+                      toggleState={toggleState}
+                    />
+                  </div>
                 </div>
 
                 <div className="Row mb-3">
                   <div className="tab_InnerSection">
-                  <h5 className="text-white">¿Wifi Extender?</h5>
+                    <h5 className="text-white">¿Wifi Extender?</h5>
                     <div className="button_container">
                       <Button
                         variant="primary"
@@ -315,15 +341,20 @@ export default function Cotizador() {
                         </Col>
                       </Row>
                       <Row>
-                        <Col className="col-6">
-                          <Button variant="dark vertical" type="submit" size="lg">
+                        <Col className="col-12 col-md-4">
+                          <Button variant="dark vertical borderBlanco mt-1" type="submit" size="lg">
                             Cotizar
                           </Button>
 
                         </Col>
-                        <Col className="col-6">
-                          <Button variant="dark vertical" onClick={() => setFormState(initialState)} size="lg">
+                        <Col className="col-12 col-md-4">
+                          <Button variant="dark vertical borderBlanco mt-1" onClick={reiniciarAmbos} size="lg">
                             Reiniciar
+                          </Button>
+                        </Col>
+                        <Col className="col-12 col-md-4">
+                          <Button variant="dark vertical borderBlanco mt-1" onClick={comparar} size="lg" border="bg-white">
+                            Comparar
                           </Button>
                         </Col>
                       </Row>
@@ -334,8 +365,10 @@ export default function Cotizador() {
             </div>
           </div>
           <div className="col-12 col-lg-5">
-            <TablaPrecios formState={formState} />
+            {show && <TablaPrecios formState={formState2} color={true} />}
+            <TablaPrecios formState={formState} color={false} />
           </div>
+
         </div>
       </div>
     </>
