@@ -25,7 +25,7 @@ export default function Page_Clientes() {
   const { isLogged } = useUser();
   const [dataListNotification, setDataListNotification] = useState([]);
   let history = useHistory();
-  var username = window["username"];
+  var username = window.sessionStorage.getItem('username');
   var usuar = {
     numeroEmpleado: username,
   };

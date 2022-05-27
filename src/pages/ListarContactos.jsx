@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Table, Dropdown } from "react-bootstrap";
 import { BsFillTrashFill, BsFillBrushFill } from "react-icons/bs";
 import useUser from "../hooks/UseUser";
+import Espera from './Espera'
 
 export default function Page_Listar() {
   const [dataList, setDataList] = useState([]);
@@ -81,6 +82,7 @@ export default function Page_Listar() {
 
   return (
     <>
+      {!dataLoaded && <Espera />}
       {dataList.length > 0 && isLogged && (
         <div
           className="w-100 bg-dark alturaUsuarios"
@@ -98,11 +100,11 @@ export default function Page_Listar() {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="bg-success text-black">
-                  <Dropdown.Item className="text-white"  onClick={() => actualizarFiltroPaquete("")}>Sin filtro</Dropdown.Item>
-                  <Dropdown.Item className="text-white"  onClick={() => actualizarFiltroPaquete("Internet 20 megas")}>Internet 20 Megas</Dropdown.Item>
-                  <Dropdown.Item className="text-white"  onClick={() => actualizarFiltroPaquete("Internet 40 megas")}>Internet 40 Megas</Dropdown.Item>
-                  <Dropdown.Item className="text-white"  onClick={() => actualizarFiltroPaquete("TV + Internet 20 megas")}>TV + Internet 20 megas</Dropdown.Item>
-                  <Dropdown.Item className="text-white"  onClick={() => actualizarFiltroPaquete("TV + Internet 40 megas")}>TV + Internet 40 megas</Dropdown.Item>
+                  <Dropdown.Item className="text-white" onClick={() => actualizarFiltroPaquete("")}>Sin filtro</Dropdown.Item>
+                  <Dropdown.Item className="text-white" onClick={() => actualizarFiltroPaquete("Internet 20 megas")}>Internet 20 Megas</Dropdown.Item>
+                  <Dropdown.Item className="text-white" onClick={() => actualizarFiltroPaquete("Internet 40 megas")}>Internet 40 Megas</Dropdown.Item>
+                  <Dropdown.Item className="text-white" onClick={() => actualizarFiltroPaquete("TV + Internet 20 megas")}>TV + Internet 20 megas</Dropdown.Item>
+                  <Dropdown.Item className="text-white" onClick={() => actualizarFiltroPaquete("TV + Internet 40 megas")}>TV + Internet 40 megas</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
@@ -125,7 +127,7 @@ export default function Page_Listar() {
                   <td>{item.nombre}</td>
                   <td>{item.paquete}</td>
                   <td>{item.telefono}</td>
-                  <td>{item.fechaProspeccion.substr(0,10)}</td>
+                  <td>{item.fechaProspeccion.substr(0, 10)}</td>
                   <td>{item.activo ? "Si" : "No"}</td>
 
                   <td style={{ display: "flex", justifyContent: "center" }}><Button onClick={() => handleClick2(item.id)}>< BsFillBrushFill /></Button><Button onClick={() => handleClick(item.id)}>< BsFillTrashFill /></Button></td>

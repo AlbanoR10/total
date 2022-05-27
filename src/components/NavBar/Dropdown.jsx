@@ -11,7 +11,7 @@ export function AdmonDrop () {
     const { isLogged } = useUser();
 
     useEffect(() => {
-        var username = window["username"];
+        var username = window.sessionStorage.getItem('username');
         if (username === "admin"){
             setNavOptions(AdmonItems);
         }else{

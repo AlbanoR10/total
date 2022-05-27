@@ -25,6 +25,7 @@ export default function UseUser (){
             })
             .catch(err =>{
                 window.sessionStorage.removeItem('jwt')
+                window.sessionStorage.removeItem('username');
                 setState({loading: false, error: true})
                 alert("Usuario o contraseña incorrecto!", [
                     { text: "OK", onPress: () => console.log("alert closed") },
@@ -39,6 +40,7 @@ export default function UseUser (){
      */
     const logout = useCallback(() => {
         window.sessionStorage.removeItem('jwt')
+        window.sessionStorage.removeItem('username');
         setJWT(null)
     }, [setJWT])
     

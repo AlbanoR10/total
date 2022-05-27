@@ -48,21 +48,21 @@ export default function Cotizador() {
       canales280: formState.canalesValue === "3" ? true : false,
     };
 
-    var username = window["username"];
+    var username = window.sessionStorage.getItem('username');
     var data = {
       numeroEmpleado: username,
     };
-
-    if ((username === "admin") | (username === null)) {
-      guardarCotizacion({ "paquete": paquete, "numeroTelefono": formState.telefono, "correoElectronico": formState.correo });
-    } else {
+console.log("Usuario de cotizacion: ", username)
+    // if ((username === "admin") | (username === null)) {
+    //   guardarCotizacion({ "paquete": paquete, "numeroTelefono": formState.telefono, "correoElectronico": formState.correo });
+    // } else {
       guardarCotizacionUsuario(
         paquete,
         formState.telefono,
         formState.correo,
         data
       );
-    }
+    // }
 
     reiniciarAmbos();
 

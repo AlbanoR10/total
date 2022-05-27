@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import useUser from "../hooks/UseUser";
 import { Dropdown } from "react-bootstrap";
-
+import Espera from './Espera'
 import { Button } from "react-bootstrap";
 import Fila from '../components/FilaCotizacion/Fila'
 
@@ -31,7 +31,7 @@ export default function PageListarCotizacion() {
      * @returns {Array.<{idCotizacion:number, paquete: Array, usuario: Array, numeroTelefono:string, correoElectronico:string}>} Lista de cotizaciones en la BD.
      */
     const getListData = async () => {
-        var username = window["username"];
+        var username = window.sessionStorage.getItem('username')
         console.log(username)
 
         var usuar = {
@@ -108,6 +108,7 @@ export default function PageListarCotizacion() {
     }
     return (
         <>
+            {!dataLoaded && <Espera/>}
             {dataList.length > 0 && isLogged &&
                 <div
                     className="w-100 bg-dark"
@@ -160,7 +161,7 @@ export default function PageListarCotizacion() {
                         </thead>
                         <tbody className="text-white">
                             {dataList.filter(filtroF).filter(filtroP).filter(filtroV).map((item) => (
-                                <Fila item={item} setDataLoaded={setDataLoaded}/>
+                                <Fila item={item} setDataLoaded={setDataLoaded} />
                             ))}
                         </tbody>
                     </Table>

@@ -1,3 +1,4 @@
+import Espera from './Espera'
 import { Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -129,131 +130,133 @@ export default function Page_Usuarios() {
   };
 
   return (
-    <><div className="container-fluid alturaUsuarios">
-      <Container className="bg-dark text-white border">
-        <br />
-        <Button color="success" onClick={() => mostrarModalInsertar()}>
-          Crear nuevo usuario
-        </Button>
-        <br />
-        <br />
-        <Table>
-          <thead>
-            <tr className="text-white">
-              <th>Nombre</th>
-              <th>Apellido Paterno</th>
-              <th>Apellido Materno</th>
-              <th>Fecha Nacimiento</th>
-              <th>Numero Empleado</th>
-            </tr>
-          </thead>
-          {isLogged && (
-            <tbody>
-              {userSelected.data.map((dato) => (
-                <tr key={dato.id} className="text-white h5">
-                  <td>{dato.nombre}</td>
-                  <td>{dato.apellidoPaterno}</td>
-                  <td>{dato.apellidoMaterno}</td>
-                  <td>{dato.fechaNacimiento.slice(0,10)}</td>
-                  <td>{dato.numeroEmpleado}</td>
-                  <td>
-                    <Button
-                      color="primary"
-                      onClick={() => mostrarModalActualizar(dato)}
-                    >
-                      Editar
-                    </Button>
-                    <Button color="danger" onClick={() => eliminar(dato)}>
-                      Eliminar
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          )}
-        </Table>
-      </Container>
+    <>
+      {!dataLoaded && <Espera />}
+      <div className="container-fluid alturaUsuarios">
+        <Container className="bg-dark text-white border">
+          <br />
+          <Button color="success" onClick={() => mostrarModalInsertar()}>
+            Crear nuevo usuario
+          </Button>
+          <br />
+          <br />
+          <Table>
+            <thead>
+              <tr className="text-white">
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Fecha Nacimiento</th>
+                <th>Numero Empleado</th>
+              </tr>
+            </thead>
+            {isLogged && (
+              <tbody>
+                {userSelected.data.map((dato) => (
+                  <tr key={dato.id} className="text-white h5">
+                    <td>{dato.nombre}</td>
+                    <td>{dato.apellidoPaterno}</td>
+                    <td>{dato.apellidoMaterno}</td>
+                    <td>{dato.fechaNacimiento.slice(0, 10)}</td>
+                    <td>{dato.numeroEmpleado}</td>
+                    <td>
+                      <Button
+                        color="primary"
+                        onClick={() => mostrarModalActualizar(dato)}
+                      >
+                        Editar
+                      </Button>
+                      <Button color="danger" onClick={() => eliminar(dato)}>
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
+          </Table>
+        </Container>
 
-      <Modal isOpen={userSelected.modalInsertar}>
-        <ModalHeader>
-          <div>
-            <h3>Registrar nuevo usuario</h3>
-          </div>
-        </ModalHeader>
+        <Modal isOpen={userSelected.modalInsertar}>
+          <ModalHeader>
+            <div>
+              <h3>Registrar nuevo usuario</h3>
+            </div>
+          </ModalHeader>
 
-        <ModalBody>
-          <Form onSubmit={onSubmit}>
-            <FormGroup>
-              <label>Numero de Empleado:</label>
+          <ModalBody>
+            <Form onSubmit={onSubmit}>
+              <FormGroup>
+                <label>Numero de Empleado:</label>
 
-              <Form.Control
-                required
-                className="form-control"
-                type="number"
-                name="numeroEmpleado"
-                maxLength="10" 
-                minLength="10"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
+                <Form.Control
+                  required
+                  className="form-control"
+                  type="number"
+                  name="numeroEmpleado"
+                  maxLength="10"
+                  minLength="10"
+                  onChange={(e) => onChange(e.target.name, e.target.value)}
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <label>Nombre:</label>
-              <Form.Control
-                required
-                className="form-control"
-                type="text"
-                name="nombre"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
+              <FormGroup>
+                <label>Nombre:</label>
+                <Form.Control
+                  required
+                  className="form-control"
+                  type="text"
+                  name="nombre"
+                  onChange={(e) => onChange(e.target.name, e.target.value)}
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <label>Apellido Paterno:</label>
-              <Form.Control
-                required
-                className="form-control"
-                type="text"
-                name="apellidoPaterno"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
+              <FormGroup>
+                <label>Apellido Paterno:</label>
+                <Form.Control
+                  required
+                  className="form-control"
+                  type="text"
+                  name="apellidoPaterno"
+                  onChange={(e) => onChange(e.target.name, e.target.value)}
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <label>Apellido Materno:</label>
-              <Form.Control
-                required
-                className="form-control"
-                type="text"
-                name="apellidoMaterno"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
+              <FormGroup>
+                <label>Apellido Materno:</label>
+                <Form.Control
+                  required
+                  className="form-control"
+                  type="text"
+                  name="apellidoMaterno"
+                  onChange={(e) => onChange(e.target.name, e.target.value)}
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <label>Fecha de Nacimiento:</label>
-              <Form.Control
-                required
-                className="form-control"
-                type="date"
-                name="fechaNacimiento"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-            <Button type="submit" color="primary">
-              Insertar
-            </Button>
-            <Button
-              className="btn btn-danger"
-              onClick={() => cerrarModalInsertar()}
-            >
-              Cancelar
-            </Button>
-          </Form>
-        </ModalBody>
+              <FormGroup>
+                <label>Fecha de Nacimiento:</label>
+                <Form.Control
+                  required
+                  className="form-control"
+                  type="date"
+                  name="fechaNacimiento"
+                  onChange={(e) => onChange(e.target.name, e.target.value)}
+                />
+              </FormGroup>
+              <Button type="submit" color="primary">
+                Insertar
+              </Button>
+              <Button
+                className="btn btn-danger"
+                onClick={() => cerrarModalInsertar()}
+              >
+                Cancelar
+              </Button>
+            </Form>
+          </ModalBody>
 
-        <ModalFooter></ModalFooter>
-      </Modal>
+          <ModalFooter></ModalFooter>
+        </Modal>
       </div>
     </>
   );

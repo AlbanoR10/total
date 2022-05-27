@@ -7,7 +7,7 @@ const ENDPOINT ="https://springtotal.wl.r.appspot.com";
  * @returns {string} Regresa un token de JWT.
  */
 export default function login ({username,password}) {
-    window['username'] = username;
+    sessionStorage.setItem('username', username);
     
     return fetch(`${ENDPOINT}/authenticate`, {
         method: "POST",
