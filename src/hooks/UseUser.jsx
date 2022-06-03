@@ -19,7 +19,7 @@ export default function UseUser (){
                 window.sessionStorage.setItem('jwt', jwt)
                 setState({loading: false, error: false})        
                 setJWT(jwt);
-                alert("Login realizado con exito!", [
+                alert("Login realizado con exito: "+window.sessionStorage.getItem('username'), [
                     { text: "OK", onPress: () => console.log("alert closed") },
                   ]); 
             })
