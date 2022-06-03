@@ -40,7 +40,7 @@ function Notificaciones({ data }) {
                     Notificaciones
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className="bg-danger">
+                <Dropdown.Menu className="bg-secondary">
                     {/* <Dropdown.Item >
                         <div class="card">
                             <div class="card-body bg-info">
@@ -56,10 +56,10 @@ function Notificaciones({ data }) {
                     {show && data.map(element => (
                     <Dropdown.Item >
                         <div class="card">
-                            <div class="card-body bg-warning">
-                                <h4 class="card-title font-weight-bold">Falta pago</h4>
-                                <p class="card-text">
-                                    No se ha registrado el pago de {element.nombre} {element.apellidoPaterno} {element.apellidoMaterno}
+                            <div class="card-body bg-dark">
+                                <h4 class="card-title fw-bold text-white">Falta pago</h4>
+                                <p class="card-text text-white">
+                                    No se ha registrado el pago de <span className="text-primary fw-bold">{element.nombre} {element.apellidoPaterno} {element.apellidoMaterno}</span>
                                     <hr/>
                                     Cobrar porfavor
                                 </p>
