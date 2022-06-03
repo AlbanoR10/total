@@ -23,11 +23,11 @@ export default function Page_Contratar({ paqueteC, handleC }) {
         <div className="p-4 bg-black text-white">
             <Form className="Formulario" onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Label className="">Nombre:</Label>
-                    <input className="rounded fs-4 text-dark" type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Juanito..." />
+                    <Label className="">Nombre*:</Label>
+                    <input className="rounded fs-4 text-dark" type="text" maxLength="100" minLength="3" required value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Juanito..." />
                 </FormGroup>
                 <FormGroup>
-                    <Label className="margenDerecha w-100">Telefono: </Label>
+                    <Label className="margenDerecha w-100">Telefono*: </Label>
                     <input className="rounded fs-4 text-dark" type="text" maxLength="10" minLength="10" required value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="662..." />
                 </FormGroup>
 

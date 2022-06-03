@@ -193,7 +193,7 @@ console.log("Usuario de cotizacion: ", username)
                     onChange={onChange}
                     formState={formState}
                     data={MegasDisp}
-                    title="Elige tu velocidad de internet"
+                    title="Elige tu velocidad de internet*"
                     name="megasValue"
                     toggleState={1}
                   />
