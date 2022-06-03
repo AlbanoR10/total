@@ -13,13 +13,14 @@ export default function NavButton() {
     
     const renderLoginButtons = ({isLogged}) => {
         return isLogged
-                ? <Link to="./" onClick={handleClick}>
-                    <div className="navButton">
+                ? <><Link to="./" onClick={handleClick}>
+                    <div className="navButton fw-bold">
                         Logout
                     </div>
                 </Link>
+                </>
                 : <Link to="./Login">
-                    <div className="navButton">
+                    <div className="navButton  fw-bold">
                         Login
                     </div>
                 </Link>
