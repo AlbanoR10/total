@@ -36,7 +36,7 @@ export default function Page_Login({ onLogin }) {
             {!isLogginLoading && (
               <Form onSubmit={handleSubmit} className="rounded border bg-black text-white p-5">
                 <Form.Group className="mb-3">
-                  <h2 className="text-white h2 text-center">Nombre de Usuario<icons.BsFillPersonFill /></h2>
+                  <h2 className="text-white h2 text-center">Nombre de Usuario*<icons.BsFillPersonFill /></h2>
                   <Form.Control
                     type="user"
                     placeholder="Ej: Juan Perez"
@@ -47,7 +47,7 @@ export default function Page_Login({ onLogin }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <h2 className="text-white h2 text-center">Contraseña<icons.BsFillLockFill /></h2>
+                  <h2 className="text-white h2 text-center">Contraseña*<icons.BsFillLockFill /></h2>
                   <Form.Control
                     type="password"
                     placeholder="Ej: 123"
