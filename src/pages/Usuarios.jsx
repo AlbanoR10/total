@@ -129,11 +129,30 @@ export default function Page_Usuarios() {
     cerrarModalInsertar();
   };
 
+  const fechaMinimo = () => {
+    var fechaInicio = new Date()
+
+    
+    var sYear = fechaInicio.getFullYear();
+    var sMonth = fechaInicio.getMonth()+1;
+    
+    var sDay = fechaInicio.getDay();
+    sYear -=18;
+    
+    console.log(sYear+"-0"+sMonth+"-0"+sDay)
+    
+    return sYear+"-0"+sMonth+"-0"+sDay;
+  }
+
+  // console.log(fechaMinimo)
+
   return (
     <>
-      {!dataLoaded && <Espera />}
+      {/* {!dataLoaded && <Espera />} */}
       <div className="container-fluid alturaUsuarios">
+        
         <Container className="bg-dark text-white border">
+        <h1 className="bg-dark text-center p-3 h1 text-white">Clientes</h1>
           <br />
           <Button color="success" onClick={() => mostrarModalInsertar()}>
             Crear nuevo usuario
@@ -187,7 +206,7 @@ export default function Page_Usuarios() {
           <ModalBody>
             <Form onSubmit={onSubmit}>
               <FormGroup>
-                <label>Numero de Empleado:</label>
+                <label>Numero de Empleado*:</label>
 
                 <Form.Control
                   required
@@ -201,7 +220,7 @@ export default function Page_Usuarios() {
               </FormGroup>
 
               <FormGroup>
-                <label>Nombre:</label>
+                <label>Nombre*:</label>
                 <Form.Control
                   required
                   className="form-control"
@@ -212,7 +231,7 @@ export default function Page_Usuarios() {
               </FormGroup>
 
               <FormGroup>
-                <label>Apellido Paterno:</label>
+                <label>Apellido Paterno*:</label>
                 <Form.Control
                   required
                   className="form-control"
@@ -223,7 +242,7 @@ export default function Page_Usuarios() {
               </FormGroup>
 
               <FormGroup>
-                <label>Apellido Materno:</label>
+                <label>Apellido Materno*:</label>
                 <Form.Control
                   required
                   className="form-control"
@@ -234,11 +253,12 @@ export default function Page_Usuarios() {
               </FormGroup>
 
               <FormGroup>
-                <label>Fecha de Nacimiento:</label>
+                <label>Fecha de Nacimiento*:</label>
                 <Form.Control
                   required
                   className="form-control"
                   type="date"
+                  max={fechaMinimo()}
                   name="fechaNacimiento"
                   onChange={(e) => onChange(e.target.name, e.target.value)}
                 />
