@@ -111,7 +111,7 @@ function ImagenesModal() {
 
     return (
         <>
-            {!dataLoaded && <Espera />}
+            {/* {!dataLoaded && <Espera />} */}
             {dataList.length > 0 && isLogged && (
                 <div
                     className="w-100 bg-dark alturaUsuarios"
@@ -163,7 +163,7 @@ function ImagenesModal() {
                 <ModalBody>
                     <Form onSubmit={onSubmit}>
                         <FormGroup>
-                            <label>Nombre:</label>
+                            <label>Nombre*:</label>
                             <Form.Control
                                 required
                                 className="form-control"
@@ -174,7 +174,7 @@ function ImagenesModal() {
                         </FormGroup>
 
                         <FormGroup>
-                            <label>URL:</label>
+                            <label>URL*:</label>
                             <Form.Control
                                 required
                                 className="form-control"
