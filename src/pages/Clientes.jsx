@@ -209,12 +209,12 @@ export default function Page_Clientes() {
                   <td>{dato.fechaNacimiento.slice(0, 10)}</td>
                   <td>{dato.paqueteContratado}</td>
                   <td>
-                    <Button color={dato.primerPago == false ? "danger" : "success"} onClick={() => Act1(dato.id, dato.primerPago, dato.segundoPago)}>
+                    <Button className={dato.segundoPago == true?"disabled":""} color={dato.primerPago == false ? "danger" : "success"} onClick={() => Act1(dato.id, dato.primerPago, dato.segundoPago)}>
                       {dato.primerPago == false ? "No" : "Si"}
                     </Button>
                   </td>
                   <td>
-                    <Button color={dato.segundoPago == false ? "danger" : "success"} onClick={() => Act2(dato.id, dato.segundoPago, dato.primerPago)}>
+                    <Button className={dato.primerPago == false?"disabled":""} color={dato.segundoPago == false ? "danger" : "success"} onClick={() => Act2(dato.id, dato.segundoPago, dato.primerPago)}>
                       {dato.segundoPago == false ? "No" : "Si"}
                     </Button>
                   </td>
@@ -286,7 +286,7 @@ export default function Page_Clientes() {
             <FormGroup>
               <label>paquete:</label>
               <select
-                value="Internet 40 megas"
+                value={userState.paqueteContratado}
                 name="paqueteContratado"
                 required
                 onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -320,25 +320,6 @@ export default function Page_Clientes() {
               </select>
             </FormGroup>
 
-            <FormGroup>
-              <label>Primer pago:</label>
-              <Form.Control
-                className="form-control"
-                type="checkbox"
-                name="primerPago"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <label>Segundo pago:</label>
-              <Form.Control
-                className="form-control"
-                type="checkbox"
-                name="segundoPago"
-                onChange={(e) => onChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
 
             <Button type="submit" color="primary" onClick={() => insertar()}>
               Insertar

@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 import Fila from '../components/FilaCotizacion/Fila'
 
 export default function PageListarCotizacion() {
+    const [mostrarEspera, setMostrarEspera] = useState(true);
     const [dataList, setDataList] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
     const { isLogged } = useUser();
@@ -52,6 +53,7 @@ export default function PageListarCotizacion() {
         if (!dataLoaded) {
             getListData();
         }
+        // setMostrarEspera(false)
     }, [dataList, dataLoaded])
 
     // const handleClick = (contact_id) => {
@@ -111,6 +113,7 @@ export default function PageListarCotizacion() {
             {!dataLoaded && <Espera/>}
             {dataList.length > 0 && isLogged &&
                 <div
+                    
                     className="w-100 bg-dark"
                     style={{
                         justifyContent: "initial",
