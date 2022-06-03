@@ -12,7 +12,7 @@ export default function Navbar() {
     const [togglebar, setTogglebar] = useState(false);
     const { isLogged } = useUser();
     const [dropdown, setDropdown] = useState(false);
-    var [navOptions, setNavOptions] = useState(navItems) ;
+    var [navOptions, setNavOptions] = useState(navItems);
 
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function Navbar() {
             }
 
         };
-        
+
         window.addEventListener("resize", handleResize);
         return () => {
             window.removeEventListener("resize", handleResize);
@@ -37,9 +37,9 @@ export default function Navbar() {
     }, [])
 
     useEffect(() => {
-        if (!isLogged){
-            setNavOptions(navItems.filter( item => item.id < 4 ) )
-        }else{
+        if (!isLogged) {
+            setNavOptions(navItems.filter(item => item.id < 4))
+        } else {
             setNavOptions(navItems)
         }
 
@@ -49,35 +49,36 @@ export default function Navbar() {
         <>
             <nav id="navbar">
                 <Link to="/" className="navbar-logo" onClick={() => setTogglebar(false)}>
-                    <img src={"./"+Logo} alt="logo" className="Logo"/>
+                    <img src={"./" + Logo} alt="logo" className="Logo" />
                 </Link>
-                
-               
+
+
                 {!mobile && (
                     <>
                         <ul className="nav-items">
                             {navOptions.map((item) => (
                                 item.title === "ADMON" ?
-                                <>
-                                    <li 
-                                        
-                                        className={item.cName}
-                                        onMouseLeave={()=> setDropdown(false)} 
-                                        onMouseEnter={()=> setDropdown(true)}
-                                    >
-                                    <Link className={item.dName} to={item.path} >{item.title}</Link>
-                                    {dropdown && <AdmonDrop/>}
-                                    </li> 
-                                </>
-                                :
+                                    <>
+                                        <li
+
+                                            className={item.cName}
+                                            onMouseLeave={() => setDropdown(false)}
+                                            onMouseEnter={() => setDropdown(true)}
+                                        >
+                                            <Link className={item.dName} to={item.path} >{item.title}</Link>
+                                            {dropdown && <AdmonDrop />}
+                                        </li>
+                                    </>
+                                    :
                                     <li className={item.cName}>
                                         <Link className={item.dName} to={item.path}>{item.title}</Link>
                                     </li>
                             ))}
                         </ul>
                         <NavButton />
-                         
-           
+                        {window.sessionStorage.getItem('username') && <span className="text-white m-2 p-2 bg-secondary rounded">{window.sessionStorage.getItem('username')}</span>}
+
+
                     </>
                 )}
 
@@ -89,6 +90,7 @@ export default function Navbar() {
                         ) : (
                             <icons2.FaBars onClick={() => setTogglebar(!togglebar)} />
                         )}
+                        
                     </div>
                 )}
 
@@ -96,18 +98,21 @@ export default function Navbar() {
             <div className="ToggleMenu">
                 <ul className={togglebar ? "nav-items-toggled active" : "nav-items-toggled"}>
                     {navOptions
-                    .map((item) => {
-                        return (
+                        .map((item) => {
+                            return (
                                 <li className={item.dName} onClick={() => setTogglebar(false)}>
                                     <Link to={item.path}>
                                         {item.title}
                                     </Link>
                                 </li>
-                        );
-                    })}
+                            );
+                        })}
                     <div onClick={() => setTogglebar(false)}>
-                        
+
                         <NavButton />
+                    </div>
+                    <div>
+                        <span className="a w-100 d-block">Usuario: {window.sessionStorage.getItem('username')}</span>
                     </div>
                 </ul>
             </div>
