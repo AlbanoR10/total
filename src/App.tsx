@@ -16,6 +16,7 @@ import PageTvInternet from './pages/Tv+Internet';
 import PageInternet from './pages/Internet';
 import PageLogin from './pages/Login';
 import PageListar from './pages/ListarContactos';
+import PageListarImagenes from './pages/ImagenesModal';
 import PageListarCotizacion from './pages/ListarCotizaciones';
 import PageContratar from './pages/Contratar';
 import PageClientes from './pages/Clientes';
@@ -52,6 +53,7 @@ class App extends React.Component {
               <Route path="/Cotizador" exact component={PageCotizador}></Route>
               <Route path="/Login" exact component={PageLogin}></Route>
               <Route path="/Listar" exact component={PageListar}></Route>
+              <Route path="/Imagenes" exact component={PageListarImagenes}></Route>
               <Route path="/Cotizaciones" exact component={PageListarCotizacion}></Route>
               <Route path="/Contratar" exact component={PageContratar}></Route>
               <Route path="/Usuarios" exact component={PageUsuarios}></Route>
