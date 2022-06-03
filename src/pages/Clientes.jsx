@@ -83,7 +83,7 @@ export default function Page_Clientes() {
     apellidoPaterno: "",
     apellidoMaterno: "",
     fechaNacimiento: "",
-    paqueteContratado: "",
+    paqueteContratado: "Internet 20 megas",
     primerPago: false,
     segundoPago: false,
     usuario: usuar,
@@ -98,7 +98,7 @@ export default function Page_Clientes() {
       apellidoPaterno: "",
       apellidoMaterno: "",
       fechaNacimiento: "",
-      paqueteContratado: "",
+      paqueteContratado: "Internet 20 megas",
       primerPago: false,
       segundoPago: false,
       usuario: usuar,
@@ -170,6 +170,19 @@ export default function Page_Clientes() {
     setDataLoaded(false);
   };
 
+  const fechaMaximo = () => {
+    var fechaInicio = new Date()
+
+    
+    var sYear = fechaInicio.getFullYear();
+    var sMonth = fechaInicio.getMonth()+1;
+    
+    var sDay = fechaInicio.getDay();
+    
+    console.log(sYear+"-"+sMonth+"-"+sDay)
+    
+    return sYear+"-0"+sMonth+"-0"+sDay;
+  }
   return (
     <>
       <Container>
@@ -240,7 +253,7 @@ export default function Page_Clientes() {
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <label>Nombre:</label>
+              <label>Nombre*:</label>
               <Form.Control
                 required
                 className="form-control"
@@ -251,7 +264,7 @@ export default function Page_Clientes() {
             </FormGroup>
 
             <FormGroup>
-              <label>Apellido Paterno:</label>
+              <label>Apellido Paterno*:</label>
               <Form.Control
                 required
                 className="form-control"
@@ -262,7 +275,7 @@ export default function Page_Clientes() {
             </FormGroup>
 
             <FormGroup>
-              <label>Apellido Materno:</label>
+              <label>Apellido Materno*:</label>
               <Form.Control
                 required
                 className="form-control"
@@ -273,12 +286,13 @@ export default function Page_Clientes() {
             </FormGroup>
 
             <FormGroup>
-              <label>Fecha de contratacion:</label>
+              <label>Fecha de contratacion*:</label>
               <Form.Control
                 required
                 className="form-control"
                 type="date"
                 name="fechaNacimiento"
+                max={fechaMaximo()}
                 onChange={(e) => onChange(e.target.name, e.target.value)}
               />
             </FormGroup>
