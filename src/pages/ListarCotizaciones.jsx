@@ -110,7 +110,7 @@ export default function PageListarCotizacion() {
     }
     return (
         <>
-            {!dataLoaded && <Espera/>}
+            {/* {!dataLoaded && <Espera/>} */}
             {dataList.length > 0 && isLogged &&
                 <div
                     
@@ -143,13 +143,14 @@ export default function PageListarCotizacion() {
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("")}>Sin filtro</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("20")}>20</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("40")}>40</Dropdown.Item>
+                                <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("50")}>50</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("100")}>100</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("200")}>200</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("500")}>500</Dropdown.Item>
                                 <Dropdown.Item className="text-white" onClick={() => actualizarFiltroInternet("1000")}>1000</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <Button className="text-center p-3 inline-block bg-danger " onClick={enviarCorreo}>Enviar recordatorios correo</Button>
+                        {/* <Button className="text-center p-3 inline-block bg-danger " onClick={enviarCorreo}>Enviar recordatorios correo</Button> */}
                     </div>
                     <Table className="bg-black w-75 m-auto h5">
                         <thead>

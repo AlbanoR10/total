@@ -82,7 +82,7 @@ export default function Page_Listar() {
 
   return (
     <>
-      {!dataLoaded && <Espera />}
+      {/* {!dataLoaded && <Espera />} */}
       {dataList.length > 0 && isLogged && (
         <div
           className="w-100 bg-dark alturaUsuarios"
