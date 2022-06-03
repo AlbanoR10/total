@@ -167,7 +167,10 @@ function ImagenesModal() {
                             <Form.Control
                                 required
                                 className="form-control"
+                                maxLength="100"
+                                minLength="3"
                                 type="text"
+                                min="1" max="5"
                                 name="nombre"
                                 onChange={(e) => setNombre(e.target.value)}
                             />
@@ -178,6 +181,8 @@ function ImagenesModal() {
                             <Form.Control
                                 required
                                 className="form-control"
+                                maxLength="100"
+                                minLength="5"
                                 type="text"
                                 name="url"
                                 onChange={(e) => setUrl(e.target.value)}

@@ -213,8 +213,8 @@ export default function Page_Usuarios() {
                   className="form-control"
                   type="number"
                   name="numeroEmpleado"
-                  maxLength="10"
-                  minLength="10"
+                  placeholder='1000000'
+                  min="1000000" max="9999999"
                   onChange={(e) => onChange(e.target.name, e.target.value)}
                 />
               </FormGroup>
@@ -224,6 +224,8 @@ export default function Page_Usuarios() {
                 <Form.Control
                   required
                   className="form-control"
+                  maxLength="100"
+                  minLength="3"
                   type="text"
                   name="nombre"
                   onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -234,7 +236,9 @@ export default function Page_Usuarios() {
                 <label>Apellido Paterno*:</label>
                 <Form.Control
                   required
-                  className="form-control"
+                  className="form-control"                  
+                  maxLength="100"
+                  minLength="3"
                   type="text"
                   name="apellidoPaterno"
                   onChange={(e) => onChange(e.target.name, e.target.value)}
@@ -246,6 +250,8 @@ export default function Page_Usuarios() {
                 <Form.Control
                   required
                   className="form-control"
+                  maxLength="100"
+                  minLength="3"
                   type="text"
                   name="apellidoMaterno"
                   onChange={(e) => onChange(e.target.name, e.target.value)}
