@@ -10,7 +10,7 @@ import InnerSectionInfo from "./InnerSectionInfo";
 import TablaPrecios from './TablaPrecios'
 
 const initialState = {
-  megasValue: "20",
+  megasValue: "50",
   canalesValue: "0",
   televisionValue: "0",
   tvExtraValue: 0,
@@ -52,7 +52,7 @@ export default function Cotizador() {
     var data = {
       numeroEmpleado: username,
     };
-console.log("Usuario de cotizacion: ", username)
+  console.log("Usuario de cotizacion: ", username)
     // if ((username === "admin") | (username === null)) {
     //   guardarCotizacion({ "paquete": paquete, "numeroTelefono": formState.telefono, "correoElectronico": formState.correo });
     // } else {
@@ -158,8 +158,7 @@ console.log("Usuario de cotizacion: ", username)
   ];
 
   const MegasDisp = [
-    { name: "20 Mb", value: "20" },
-    { name: "40 Mb", value: "40" },
+    { name: "50 Mb", value: "50"},
     { name: "100 Mb", value: "100" },
     { name: "200 Mb", value: "200" },
     { name: "500 Mb", value: "500" },
