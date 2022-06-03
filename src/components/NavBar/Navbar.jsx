@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { navItems } from './NavbarItems';
 import { AdmonDrop } from './Dropdown';
+import { AdmonDrop2 } from './Dropdown2';
 import NavButton from './NavButton';
 import useUser from '../../hooks/UseUser';
 import Logo from "../../images/LOGO-BLANCO.png"
@@ -66,7 +67,7 @@ export default function Navbar() {
                                             onMouseEnter={() => setDropdown(true)}
                                         >
                                             <Link className={item.dName} to={item.path} >{item.title}</Link>
-                                            {dropdown && <AdmonDrop />}
+                                            {dropdown && <AdmonDrop/>}
                                         </li>
                                     </>
                                     :
@@ -107,6 +108,8 @@ export default function Navbar() {
                                 </li>
                             );
                         })}
+                        
+                        {mobile && <AdmonDrop2/>}
                     <div onClick={() => setTogglebar(false)}>
 
                         <NavButton />

@@ -5,7 +5,7 @@ import { UserItems } from './UserItems';
 import useUser from '../../hooks/UseUser';
 import './Dropdown.css';
 
-export function AdmonDrop(mobile) {
+export function AdmonDrop2(mobile) {
     var [navOptions, setNavOptions] = useState(UserItems);
     const [dropdown, setDropdown] = useState(false);
     const { isLogged } = useUser();
@@ -22,20 +22,13 @@ export function AdmonDrop(mobile) {
 
     return (
         <>
-            {<ul className={dropdown ? "Admon-submenu clicked" : "Admon-submenu"} onClick={() => setDropdown(!dropdown)}>
+            {mobile && <>
                 {navOptions.map((item) => (
-                    <li key={item.id} className={item.dName} onClick={() => setDropdown(false)}>
+                    <li key={item.id} className="a w-100 d-block" onClick={() => setDropdown(false)}>
                         <Link to={item.path}>{item.title}</Link>
                     </li>
                 ))}
-            </ul>}
-            {/* {mobile && <>
-                {navOptions.map((item) => (
-                    <li key={item.id} className={item.dName} onClick={() => setDropdown(false)}>
-                        <Link to={item.path}>{item.title}</Link>
-                    </li>
-                ))}
-            </>} */}
+            </>}
             
         </>
     )
