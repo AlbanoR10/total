@@ -8,58 +8,49 @@ export default function Page_TvInternet() {
         <div className="row">
           <Card
             titulo="Inicial"
-            subtitulo="TV + Internet 20 megas"
-            precio="$459"
-            velbajada="20"
-            velsubida="3"
+            subtitulo="TV + Internet 50 megas"
+            precio="$639"
+            velbajada="50"
+            velsubida="5"
             descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
-          />
-          <Card
-            titulo="Inicial"
-            subtitulo="TV + Internet 40 megas"
-            precio="$559"
-            velbajada="20"
-            velsubida="3"
-            descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
+            descripcion2="-$40 a partir del 6º mes"
           />
           <Card
             titulo="Inicial"
             subtitulo="TV + Internet 100 megas"
-            precio="$859"
-            velbajada="20"
-            velsubida="3"
+            precio="$739"
+            velbajada="100"
+            velsubida="10"
             descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
+            descripcion2="-$40 a partir del 6º mes"
           />
 
           <Card
             titulo="Inicial"
             subtitulo="TV + Internet 200 megas"
-            precio="$1059"
-            velbajada="20"
-            velsubida="3"
+            precio="$859"
+            velbajada="200"
+            velsubida="20"
             descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
+            descripcion2="-$60 a partir del 6º mes"
           />
           <Card
             titulo="Inicial"
             subtitulo="TV + Internet 500 megas"
-            precio="$1259"
-            velbajada="20"
-            velsubida="3"
+            precio="$1099"
+            velbajada="500"
+            velsubida="50"
             descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
+            descripcion2="-$80 a partir del 6º mes"
           />
           <Card
             titulo="Inicial"
             subtitulo="TV + Internet 1000 megas"
-            precio="$1459"
-            velbajada="20"
-            velsubida="3"
+            precio="$1799"
+            velbajada="1000"
+            velsubida="100"
             descripcion="Descuento de por vida"
-            descripcion2="-$20 a partir del 6º mes"
+            descripcion2="-$100 a partir del 6º mes"
           />
         </div>
       </div>
